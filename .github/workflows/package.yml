@@ -15,7 +15,7 @@ permissions:
   contents: write
 
 env:
-  PLUGINS: drive115 browser-emulator emby302
+  PLUGINS: drive115 browser-emulator emby302 qqbot_note
   PLATFORMS: linux-amd64 linux-arm64
 
 jobs:
@@ -190,8 +190,13 @@ jobs:
           set -euo pipefail
           test -s dist/manifests.tar.gz
           archive_count="$(find dist -maxdepth 1 -type f -name '*.tar.gz' | wc -l | tr -d ' ')"
-          if [ "$archive_count" -lt 7 ]; then
-            echo "::error::expected plugin archives plus manifests.tar.gz, found $archive_count files"
+          set -- $PLUGINS
+          plugin_count=$#
+          set -- $PLATFORMS
+          platform_count=$#
+          expected_archive_count=$((plugin_count * platform_count + 1))
+          if [ "$archive_count" -lt "$expected_archive_count" ]; then
+            echo "::error::expected at least $expected_archive_count archives (plugin packages plus manifests.tar.gz), found $archive_count files"
             find dist -maxdepth 1 -type f -print
             exit 1
           fi

@@ -1,0 +1,24 @@
+id: qqbot-notifier
+name: QQ Bot 通知
+version: 0.1.0
+description: 通过 QQ 开放平台向用户私聊或群聊发送通知。
+category: notification
+tags: [qq, bot, notification]
+type: cli
+entry:
+  linux-amd64: bin/media-agent-plugin-qqbot_note-linux-amd64
+  linux-arm64: bin/media-agent-plugin-qqbot_note-linux-arm64
+protocol: provider.v1
+transport: hashicorp_go_plugin
+capabilities:
+  - notifier.send
+  - notifier.test
+permissions:
+  network:
+    - bots.qq.com
+    - api.sgroup.qq.com
+  secrets:
+    - qqbot-notifier.qq_app_secret
+resources:
+  memory_limit_mb: 128
+  idle_timeout_seconds: 60

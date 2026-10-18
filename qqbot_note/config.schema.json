@@ -1,0 +1,43 @@
+{
+  "fields": [
+    {
+      "name": "qq_app_id",
+      "type": "string",
+      "label": "QQ 机器人 AppID",
+      "required": true
+    },
+    {
+      "name": "qq_app_secret",
+      "type": "password",
+      "label": "QQ 机器人密钥",
+      "required": true,
+      "secret": true
+    },
+    {
+      "name": "qq_recipient_type",
+      "type": "select",
+      "label": "接收目标类型",
+      "required": true,
+      "default": "c2c",
+      "options": [
+        { "value": "c2c", "label": "用户私聊" },
+        { "value": "group", "label": "群聊" }
+      ]
+    },
+    {
+      "name": "qq_recipient_openids",
+      "type": "string",
+      "label": "接收者 OpenID",
+      "required": true,
+      "placeholder": "逗号分隔，可填写多个",
+      "help": "填写机器人已获准主动发送消息的用户 OpenID 或群 OpenID；多个目标使用逗号分隔。"
+    },
+    {
+      "name": "qq_use_markdown",
+      "type": "boolean",
+      "label": "优先发送 Markdown",
+      "default": true,
+      "help": "需在 QQ 开放平台获得 Markdown 消息权限；权限不可用时自动回退纯文本。"
+    }
+  ]
+}

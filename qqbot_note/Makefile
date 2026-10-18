@@ -1,4 +1,4 @@
-BINARY := media-agent-plugin-qqbot-notifier
+BINARY := media-agent-plugin-qqbot_note
 GOOS ?= $(shell go env GOOS)
 GOARCH ?= $(shell go env GOARCH)
 OUT := bin/$(BINARY)-$(GOOS)-$(GOARCH)

@@ -6,8 +6,8 @@ category: notification
 tags: [qq, bot, notification]
 type: cli
 entry:
-  linux-amd64: bin/media-agent-plugin-qqbot-notifier-linux-amd64
-  linux-arm64: bin/media-agent-plugin-qqbot-notifier-linux-arm64
+  linux-amd64: bin/media-agent-plugin-qqbot_note-linux-amd64
+  linux-arm64: bin/media-agent-plugin-qqbot_note-linux-arm64
 protocol: provider.v1
 transport: hashicorp_go_plugin
 capabilities:
